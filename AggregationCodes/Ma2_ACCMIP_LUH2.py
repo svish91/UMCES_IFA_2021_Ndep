@@ -8,7 +8,7 @@ import geopandas as gp
 
 
 shapefile = gp.read_file(r"G:\My Drive\Data_for_NetworkAnalysis\Country Boundaries\Longitude_Graticules_and_World_Countries_Boundaries-shp"
-                             r"\99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp")
+                             r"\99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp") ## any shapefile can be used
 # columns: OBJECTID	CNTRY_NAME
 df_NOx_kgNha = pd.DataFrame(0, index=np.arange(len(shapefile)), columns=np.arange(1961,2051,1))
 df_NOx_kgNha = df_NOx_kgNha.rename(index = shapefile['CNTRY_NAME'])
