@@ -7,8 +7,7 @@ import matplotlib.pyplot as plt
 import geopandas as gp
 
 
-shapefile = gp.read_file(r"D:\GoogleDrive\Data_for_NetworkAnalysis\Country Boundaries\Longitude_Graticules_and_World_Countries_Boundaries-shp"
-                             r"\99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp")
+shapefile = gp.read_file(r"99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp")
 # columns: OBJECTID	CNTRY_NAME
 df_NOx_kgNha = pd.DataFrame(0, index=np.arange(len(shapefile)), columns=np.arange(1961,2019,1))
 df_NOx_kgNha = df_NOx_kgNha.rename(index = shapefile['CNTRY_NAME'])
@@ -26,16 +25,16 @@ for yr in np.arange(1961,2019,1):
     else:
         yrcr=yr
     idx_yr = np.where(np.arange(1961,2019,1)==yr)[0]
-    file_dir = r'D:\GoogleDrive\N_deposition_project\Gridded DATA\Data_Organization\Modified_Raster_Files\Ndep_ACCMIP'
+    file_dir = r'.\Modified_Raster_Files\Ndep_ACCMIP'
     file_name = "NOx_yr{0}".format(yr)
-    crfile_dir = r'D:\GoogleDrive\N_deposition_project\Gridded DATA\Data_Organization\Modified_Raster_Files\Cropland_LUH2'
+    crfile_dir = r'.\Modified_Raster_Files\Cropland_LUH2'
     crfile_name = "Cropland_yr{0}_LUH".format(yrcr)
     xx_NOx_kgNkm = f_aggDataSimple(file_dir,file_name,crfile_dir, crfile_name)
     df_NOx_kgNha[yr] =xx_NOx_kgNkm[0]/100
     # NHx
-    file_dir = r'D:\GoogleDrive\N_deposition_project\Gridded DATA\Data_Organization\Modified_Raster_Files\Ndep_ACCMIP'
+    file_dir = r'.\Modified_Raster_Files\Ndep_ACCMIP'
     file_name = "NHy_yr{0}".format(yr)
-    crfile_dir = r'D:\GoogleDrive\N_deposition_project\Gridded DATA\Data_Organization\Modified_Raster_Files\Cropland_LUH2'
+    crfile_dir = r'.\Modified_Raster_Files\Cropland_LUH2'
     crfile_name = "Cropland_yr{0}_LUH".format(yrcr)
     xx_NHy_kgNkm = f_aggDataSimple(file_dir,file_name,crfile_dir, crfile_name)
     df_NHy_kgNha[yr] = xx_NHy_kgNkm[0]/100
@@ -59,7 +58,7 @@ for co in range(0,len(shapefile['CNTRY_NAME'])):
     plt.xlabel('Years')
     plt.title(shapefile['CNTRY_NAME'][co])
     plt.ylim([0,20])
-    plt.savefig(r"D:\GoogleDrive\N_deposition_project\Gridded DATA\Data_Organization\Results\LUH2\Time_Series_Co_1961_2018\TotNdep_{0}_kgNha.png".format(shapefile['CNTRY_NAME'][co]), dpi=200)
+    plt.savefig(r".\Results\LUH2\Time_Series_Co_1961_2018\TotNdep_{0}_kgNha.png".format(shapefile['CNTRY_NAME'][co]), dpi=200)
 
 # to csv
 df_totNdep_kgNha.to_csv("df_totNdep_kgNha.csv")
@@ -85,7 +84,7 @@ for yr_to_plot in np.arange(1961,2019,1):
                               ,vmax = 30, vmin = 0  )
     ax.set_title("N deposition (kgN/ha) {0} ".format(yr_to_plot))
     #(missing values \nare plotted in grey)
-    plt.savefig(r"D:\GoogleDrive\N_deposition_project\Gridded DATA\Data_Organization\Results\ACCMIP\LUH2\Yearly_maps_1961_2018_SameLim\Ndep_{0}_kgNha_m.png".format(yr_to_plot), dpi=200)
+    plt.savefig(r".\Results\ACCMIP\LUH2\Yearly_maps_1961_2018_SameLim\Ndep_{0}_kgNha_m.png".format(yr_to_plot), dpi=200)
 
 
 # nox
@@ -105,7 +104,7 @@ for yr_to_plot in np.arange(1961,2019,1):
                               ,vmax = 10, vmin = 0  )
     ax.set_title("NOx deposition (kgN/ha) {0} ".format(yr_to_plot))
     #(missing values \nare plotted in grey)
-    plt.savefig(r"D:\GoogleDrive\N_deposition_project\Gridded DATA\Data_Organization\Results\LUH2\Yearly_Maps_1961_2018\NOx\NOx_{0}_kgNha_m.png".format(yr_to_plot), dpi=200)
+    plt.savefig(r".\Results\LUH2\Yearly_Maps_1961_2018\NOx\NOx_{0}_kgNha_m.png".format(yr_to_plot), dpi=200)
     plt.close()
 
 # nox
@@ -125,8 +124,7 @@ for yr_to_plot in np.arange(1961,2019,1):
                               ,vmax = 10, vmin = 0  )
     ax.set_title("NOx deposition (kgN/ha) {0} ".format(yr_to_plot))
     #(missing values \nare plotted in grey)
-    plt.savefig(r"D:\GoogleDrive\N_deposition_project\Gridded DATA\Data_Organization\Results\LUH2\Yearly_Maps_1961_2018\NHy\NHy_{0}_kgNha_m.png".format(yr_to_plot), dpi=200)
+    plt.savefig(r".\Results\LUH2\Yearly_Maps_1961_2018\NHy\NHy_{0}_kgNha_m.png".format(yr_to_plot), dpi=200)
     plt.close()
 
 
-#cmap-Accent, Accent_r, Blues, Blues_r, BrBG, BrBG_r, BuGn, BuGn_r, BuPu, BuPu_r, CMRmap, CMRmap_r, Dark2, Dark2_r, GnBu, GnBu_r, Greens, Greens_r, Greys, Greys_r, OrRd, OrRd_r, Oranges, Oranges_r, PRGn, PRGn_r, Paired, Paired_r, Pastel1, Pastel1_r, Pastel2, Pastel2_r, PiYG, PiYG_r, PuBu, PuBuGn, PuBuGn_r, PuBu_r, PuOr, PuOr_r, PuRd, PuRd_r, Purples, Purples_r, RdBu, RdBu_r, RdGy, RdGy_r, RdPu, RdPu_r, RdYlBu, RdYlBu_r, RdYlGn, RdYlGn_r, Reds, Reds_r, Set1, Set1_r, Set2, Set2_r, Set3, Set3_r, Spectral, Spectral_r, Wistia, Wistia_r, YlGn, YlGnBu, YlGnBu_r, YlGn_r, YlOrBr, YlOrBr_r, YlOrRd, YlOrRd_r, afmhot, afmhot_r, autumn, autumn_r, binary, binary_r, bone, bone_r, brg, brg_r, bwr, bwr_r, cividis, cividis_r, cool, cool_r, coolwarm, coolwarm_r, copper, copper_r, cubehelix, cubehelix_r, flag, flag_r, gist_earth, gist_earth_r, gist_gray, gist_gray_r, gist_heat, gist_heat_r, gist_ncar, gist_ncar_r, gist_rainbow, gist_rainbow_r, gist_stern, gist_stern_r, gist_yarg, gist_yarg_r, gnuplot, gnuplot2, gnuplot2_r, gnuplot_r, gray, gray_r, hot, hot_r, hsv, hsv_r, inferno, inferno_r, jet, jet_r, magma, magma_r, nipy_spectral, nipy_spectral_r, ocean, ocean_r, pink, pink_r, plasma, plasma_r, prism, prism_r, rainbow, rainbow_r, seismic, seismic_r, spring, spring_r, summer, summer_r, tab10, tab10_r, tab20, tab20_r, tab20b, tab20b_r, tab20c, tab20c_r, terrain, terrain_r, twilight, twilight_r, twilight_shifted, twilight_shifted_r, viridis, viridis_r, winter, winter_r
