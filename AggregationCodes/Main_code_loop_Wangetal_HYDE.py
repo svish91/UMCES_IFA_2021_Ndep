@@ -7,13 +7,8 @@ import matplotlib.pyplot as plt
 import geopandas as gp
 
 
-shapefile = gp.read_file(r"D:\GoogleDrive\Data_for_NetworkAnalysis\Country Boundaries\Longitude_Graticules_and_World_Countries_Boundaries-shp"
-                             r"\99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp")
+shapefile = gp.read_file(r"99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp")
 # columns: OBJECTID	CNTRY_NAME
-# df_NOx_kgNha = pd.DataFrame(0, index=np.arange(len(shapefile)), columns=np.arange(1961,2019,1))
-# df_NOx_kgNha = df_NOx_kgNha.rename(index = shapefile['CNTRY_NAME'])
-# df_NHy_kgNha= pd.DataFrame(0, index=np.arange(len(shapefile)), columns=np.arange(1961,2019,1))
-# df_NHy_kgNha = df_NHy_kgNha.rename(index = shapefile['CNTRY_NAME'])
 df_totNdep_kgNha= pd.DataFrame(np.nan, index=np.arange(len(shapefile)), columns=np.arange(1961,2019,1))
 df_totNdep_kgNha = df_totNdep_kgNha.rename(index = shapefile['CNTRY_NAME'])
 df_cropland_km2= pd.DataFrame(np.nan, index=np.arange(len(shapefile)), columns=np.arange(1961,2019,1))
@@ -62,7 +57,7 @@ for co in range(0,len(shapefile['CNTRY_NAME'])):
     plt.xlabel('Years')
     plt.title(shapefile['CNTRY_NAME'][co])
     plt.ylim([0,40])
-    plt.savefig(r"D:\GoogleDrive\N_deposition_project\Gridded DATA\Data_Organization\Results\ZhouFeng\HYDE\Time_Series_Co_1961_2018\TotNdep_{0}_kgNha.png".format(shapefile['CNTRY_NAME'][co]), dpi=200)
+    plt.savefig(r"Time_Series_Co_1961_2018\TotNdep_{0}_kgNha.png".format(shapefile['CNTRY_NAME'][co]), dpi=200)
 
 
 df_totNdep_kgNha.to_csv("df_totNdep_kgNha.csv")
@@ -85,5 +80,5 @@ for yr_to_plot in np.arange(1961,2019,1):
                               ,vmax = 30, vmin = 0  )
     ax.set_title("N deposition (kgN/ha) {0} ".format(yr_to_plot))
     #(missing values \nare plotted in grey)
-    plt.savefig(r"D:\GoogleDrive\N_deposition_project\Gridded DATA\Data_Organization\Results\ZhouFeng\HYDE\Yearly_Maps_1961_2018\Ndep_{0}_kgNha.png".format(yr_to_plot), dpi=200)
+    plt.savefig(r"Yearly_Maps_1961_2018\Ndep_{0}_kgNha.png".format(yr_to_plot), dpi=200)
 
