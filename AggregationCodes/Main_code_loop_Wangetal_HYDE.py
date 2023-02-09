@@ -34,9 +34,9 @@ for yr in yrN:
     else:
         yrcr=yr
     idx_yr = np.where(np.arange(1961,2019,1)==yr)[0]
-    file_dir = r'D:\GoogleDrive\N_deposition_project\Gridded DATA\N_deposition\N_deposition_global_ZHOUF\N_deposition_global_ZHOUF'
+    file_dir = r'.\N_deposition_global_ZHOUF\N_deposition_global_ZHOUF'
     file_name = "ndep_{0}".format(yr)
-    crfile_dir = r'D:\GoogleDrive\N_deposition_project\Gridded DATA\Data_Organization\Modified_Raster_Files\Cropland_HYDE\For Zhou'
+    crfile_dir = r'.\Modified_Raster_Files\Cropland_HYDE\For Zhou'
     crfile_name = "Cropland{0}AD_HYDE_Zhou".format(yrcr)
     Ndep_tmp = f_aggDataSimple(file_dir,file_name,crfile_dir, crfile_name)
     # cropland
