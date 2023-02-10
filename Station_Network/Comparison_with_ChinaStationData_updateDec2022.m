@@ -16,7 +16,7 @@ opts.VariableTypes = ["categorical", "categorical", "double", "double", "double"
 opts = setvaropts(opts, ["Province", "site"], "EmptyFieldRule", "auto");
 
 % Import the data
-CroplandNDepinChina19802018 = readtable("G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Station DATA\Fusuo_Zhangs_group_at_CAU\Cropland N Dep_in China 1980-2018.xlsx", opts, "UseExcel", false);
+CroplandNDepinChina19802018 = readtable(".\Station DATA\Fusuo_Zhangs_group_at_CAU\Cropland N Dep_in China 1980-2018.xlsx", opts, "UseExcel", false);
 
 stn_mat = nan(length(unique(CroplandNDepinChina19802018.site)),length(1961:2018));
 site_unique = unique(CroplandNDepinChina19802018.site);
@@ -56,7 +56,7 @@ opts = setvaropts(opts, "VarName1", "WhitespaceRule", "preserve");
 opts = setvaropts(opts, "VarName1", "EmptyFieldRule", "auto");
 
 % Import the data
-[number, string, dftotNdepkgNha]= xlsread('G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Data files for repository\Adjusting missing values using FAO\Submission filles\1_AH.xlsx');
+[number, string, dftotNdepkgNha]= xlsread('.\Data files for repository\Adjusting missing values using FAO\Submission filles\1_AH.xlsx');
 dftotNdepkgNha(1,:)=[];
 
 df_totNdep_AH = cell2mat(dftotNdepkgNha(45,3:end));
@@ -81,7 +81,7 @@ opts = setvaropts(opts, "VarName1", "WhitespaceRule", "preserve");
 opts = setvaropts(opts, "VarName1", "EmptyFieldRule", "auto");
 
 % Import the data
-[number, string, dftotNdepkgNha]= xlsread('G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Data files for repository\Adjusting missing values using FAO\Submission filles\2_AL.xlsx');
+[number, string, dftotNdepkgNha]= xlsread('.\Data files for repository\Adjusting missing values using FAO\Submission filles\2_AL.xlsx');
 dftotNdepkgNha(1,:)=[];
 
 df_totNdep_AL = cell2mat(dftotNdepkgNha(45,3:end));
@@ -107,7 +107,7 @@ opts = setvaropts(opts, "VarName1", "WhitespaceRule", "preserve");
 opts = setvaropts(opts, "VarName1", "EmptyFieldRule", "auto");
 
 % Import the data
-[number, string, dftotNdepkgNha]= xlsread('G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Data files for repository\Adjusting missing values using FAO\Submission filles\3_WH.xlsx');
+[number, string, dftotNdepkgNha]= xlsread('.\Data files for repository\Adjusting missing values using FAO\Submission filles\3_WH.xlsx');
 dftotNdepkgNha(1,:)=[];
 
 df_totNdep_WH = cell2mat(dftotNdepkgNha(45,3:end));
@@ -133,7 +133,7 @@ opts = setvaropts(opts, "VarName1", "WhitespaceRule", "preserve");
 opts = setvaropts(opts, "VarName1", "EmptyFieldRule", "auto");
 
 % Import the data
-[number, string, dftotNdepkgNha]= xlsread('G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Data files for repository\Adjusting missing values using FAO\Submission filles\4_WL.xlsx');
+[number, string, dftotNdepkgNha]= xlsread('.\Data files for repository\Adjusting missing values using FAO\Submission filles\4_WL.xlsx');
 dftotNdepkgNha(1,:)=[];
 
 df_totNdep_WL = cell2mat(dftotNdepkgNha(45,3:end));clear opts 
