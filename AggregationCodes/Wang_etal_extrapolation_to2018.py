@@ -30,10 +30,10 @@ x_yr = 0
 for yr in range(1997,2019):
     print(yr)
     # nh3
-    file_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\N_Emission Data\Upto 2018\NH3 gridded map\TOTALS_txt'
+    file_dir = r'.\N_Emission Data\Upto 2018\NH3 gridded map\TOTALS_txt'
     df_NH3_tonsyr = pd.read_csv(os.path.join(file_dir, "EDGARv6.1_NH3_{0}_TOTALS.txt".format(yr)), sep = ";", skiprows = 2)
     # nox
-    file_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\N_Emission Data\Upto 2018\NOx gridded map\TOTALS_txt'
+    file_dir = r'.\N_Emission Data\Upto 2018\NOx gridded map\TOTALS_txt'
     df_NOx_tonsyr = pd.read_csv(os.path.join(file_dir, "EDGARv6.1_NOx_{0}_TOTALS.txt".format(yr)), sep = ";", skiprows = 2)
     # total
     int_df = pd.merge(df_NH3_tonsyr, df_NOx_tonsyr, how ='outer', on =['lat', 'lon'])
@@ -62,7 +62,7 @@ for yr in range(1997, 2019):
     x_yr += 1
 
 # writing data to a text file
-file_dir_tm = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\N_emission_data_using_textfile\Total_emissions_tonsyr'
+file_dir_tm = r'.\N_emission_data_using_textfile\Total_emissions_tonsyr'
 x_yr = 0
 for yr in range(1997,2019):# change 1997 to 1970 if want files from beginning
     with open(os.path.join('TM_tonsyr_{0}.txt'.format(yr)), 'w') as testfile:
@@ -72,7 +72,7 @@ for yr in range(1997,2019):# change 1997 to 1970 if want files from beginning
 
 
 # reading data and adjusting resolution
-file_txt = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\N_emission_data_using_textfile\Total_emissions_tonsyr'
+file_txt = r'.\N_emission_data_using_textfile\Total_emissions_tonsyr'
 rRes = 0.1
 #xRange = np.arange(int_df_m.lon.min(), int_df_m.lon.max() + rRes, rRes)
 #yRange = np.arange(int_df_m.lat.min(), int_df_m.lat.max() + rRes, rRes)
@@ -122,7 +122,7 @@ for yr in np.arange(1997,2019):
 ## reading deposition data
 yrN = np.arange(1997,2014)
 # for 2030 use this file name '2030_RCP45'
-file_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\N_deposition\N_deposition_global_ZHOUF\N_deposition_global_ZHOUF'
+file_dir = r'.\N_deposition_global_ZHOUF\N_deposition_global_ZHOUF'
 Ndep_kgkm2yr = np.empty((17,143,144))
 
 for i in range(0,len(yrN)):
@@ -162,7 +162,7 @@ plt.colorbar()
 # writing the dataset
 transform = from_origin(-178.75, 89.3706, 2.48263888888888884, 1.249938872316494809)
 
-file_dir_ep = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\N_emission_data_using_textfile\Raster_file_Zhou_extended_period'
+file_dir_ep = r'.\N_emission_data_using_textfile\Raster_file_Zhou_extended_period'
 x_yr =  0
 Ndep_etrplt[Ndep_etrplt<0] = np.nan
 for yr in np.arange(2014,2019):
@@ -192,7 +192,7 @@ for yr in np.arange(2014,2019):
 
 #################### interpolating between decades
 # reading data and adjusting resolution
-file_txt = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\N_emission_data_using_textfile\Total_emissions_tonsyr'
+file_txt = r'.\N_emission_data_using_textfile\Total_emissions_tonsyr'
 rRes = 0.1
 #xRange = np.arange(int_df_m.lon.min(), int_df_m.lon.max() + rRes, rRes)
 #yRange = np.arange(int_df_m.lat.min(), int_df_m.lat.max() + rRes, rRes)
@@ -242,7 +242,7 @@ for yr in np.arange(1970,1998):
 ## reading deposition data
 yrN = [1970,1980,1990,1997]
 # for 2030 use this file name '2030_RCP45'
-file_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\N_deposition\N_deposition_global_ZHOUF\N_deposition_global_ZHOUF'
+file_dir = r'.\N_deposition_global_ZHOUF\N_deposition_global_ZHOUF'
 Ndep_kgkm2yr = np.empty((4,143,144))
 
 for i in range(0,len(yrN)):
@@ -283,7 +283,7 @@ for ii_emi in range(0,len(idx_emi)-1):
 # considering negative values also and not ignoring them like last attempt
 transform = from_origin(-178.75, 89.3706, 2.48263888888888884, 1.249938872316494809)
 
-file_dir_ep = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period'
+file_dir_ep = r'.\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period'
 yrN = np.concatenate((np.arange(1971,1980), np.arange(1981,1990), np.arange(1991,1997)))
 for yr in yrN:
     idx_yr = np.where(np.arange(1970,1997)==yr)
@@ -306,8 +306,7 @@ import os
 import matplotlib.pyplot as plt
 import geopandas as gp
 
-shapefile = gp.read_file(r"G:\My Drive\Data_for_NetworkAnalysis\Country Boundaries\Longitude_Graticules_and_World_Countries_Boundaries-shp"
-                             r"\99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp")
+shapefile = gp.read_file(r"99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp")
 # columns: OBJECTID	CNTRY_NAME
 # df_NOx_kgNha = pd.DataFrame(0, index=np.arange(len(shapefile)), columns=np.arange(1961,2019,1))
 # df_NOx_kgNha = df_NOx_kgNha.rename(index = shapefile['CNTRY_NAME'])
@@ -324,9 +323,9 @@ for yr in yrN:
         yrcr = 2015
     else:
         yrcr = yr
-    file_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period'
+    file_dir = r'.\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period'
     file_name = "ndep_ep_{0}_wNeg_interp".format(yr)
-    crfile_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Modified_Raster_Files\Cropland_LUH2\For_Zhou\Modified'
+    crfile_dir = r'.\Modified_Raster_Files\Cropland_LUH2\For_Zhou\Modified'
     crfile_name = "Cropland_yr{0}_LUH_Zhou".format(yrcr)
     Ndep_tmp = f_aggDataSimple(file_dir,file_name,crfile_dir, crfile_name)
     # cropland
@@ -345,7 +344,7 @@ df_totNdep_kgNha.to_csv("df_totNdep_kgNha_ExtendedPeriod_usingEmission_wNeg_Zhou
 ## between 1960 and 1970
 yrN = [1960, 1970]
 # for 2030 use this file name '2030_RCP45'
-file_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\N_deposition\N_deposition_global_ZHOUF\N_deposition_global_ZHOUF'
+file_dir = r'.\N_deposition\N_deposition_global_ZHOUF\N_deposition_global_ZHOUF'
 Ndep_kgkm2yr = np.empty((2,143,144))
 
 for i in range(0,len(yrN)):
@@ -379,7 +378,7 @@ for lat in range(0,143):
 # considering negative values also and not ignoring them like last attempt
 transform = from_origin(-178.75, 89.3706, 2.48263888888888884, 1.249938872316494809)
 
-file_dir_ep = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period'
+file_dir_ep = r'.\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period'
 yrN = np.arange(1961,1970)
 for yr in yrN:
     idx_yr = np.where(np.arange(1961,1970)==yr)
@@ -401,13 +400,8 @@ import os
 import matplotlib.pyplot as plt
 import geopandas as gp
 
-shapefile = gp.read_file(r"G:\My Drive\Data_for_NetworkAnalysis\Country Boundaries\Longitude_Graticules_and_World_Countries_Boundaries-shp"
-                             r"\99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp")
+shapefile = gp.read_file(r"99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp")
 # columns: OBJECTID	CNTRY_NAME
-# df_NOx_kgNha = pd.DataFrame(0, index=np.arange(len(shapefile)), columns=np.arange(1961,2019,1))
-# df_NOx_kgNha = df_NOx_kgNha.rename(index = shapefile['CNTRY_NAME'])
-# df_NHy_kgNha= pd.DataFrame(0, index=np.arange(len(shapefile)), columns=np.arange(1961,2019,1))
-# df_NHy_kgNha = df_NHy_kgNha.rename(index = shapefile['CNTRY_NAME'])
 df_totNdep_kgNha= pd.DataFrame(np.nan, index=np.arange(len(shapefile)), columns=yrN)
 df_totNdep_kgNha = df_totNdep_kgNha.rename(index = shapefile['CNTRY_NAME'])
 df_cropland_km2= pd.DataFrame(np.nan, index=np.arange(len(shapefile)), columns=yrN)
@@ -419,9 +413,9 @@ for yr in yrN:
         yrcr = 2015
     else:
         yrcr = yr
-    file_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period'
+    file_dir = r'.\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period'
     file_name = "ndep_ep_{0}_wNeg_interp".format(yr)
-    crfile_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Modified_Raster_Files\Cropland_LUH2\For_Zhou\Modified'
+    crfile_dir = r'.\Modified_Raster_Files\Cropland_LUH2\For_Zhou\Modified'
     crfile_name = "Cropland_yr{0}_LUH_Zhou".format(yrcr)
     Ndep_tmp = f_aggDataSimple(file_dir,file_name,crfile_dir, crfile_name)
     # cropland
@@ -433,7 +427,7 @@ df_totNdep_kgNha.to_csv("df_totNdep_kgNha_ExtendedPeriod_usingEmission_wNeg_Zhou
 
 ###### interpolating between 1970 - 1997 using a different approach to avoid negative values in the extimates
 # reading data and adjusting resolution
-file_txt = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\N_emission_data_using_textfile\Total_emissions_tonsyr'
+file_txt = r'.\N_emission_data_using_textfile\Total_emissions_tonsyr'
 rRes = 0.1
 #xRange = np.arange(int_df_m.lon.min(), int_df_m.lon.max() + rRes, rRes)
 #yRange = np.arange(int_df_m.lat.min(), int_df_m.lat.max() + rRes, rRes)
@@ -482,7 +476,7 @@ for yr in np.arange(1970,1998):
 ## reading deposition data
 yrN = [1970,1980,1990,1997]
 # for 2030 use this file name '2030_RCP45'
-file_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\N_deposition\N_deposition_global_ZHOUF\N_deposition_global_ZHOUF'
+file_dir = r'.\N_deposition\N_deposition_global_ZHOUF\N_deposition_global_ZHOUF'
 Ndep_kgkm2yr = np.empty((4,143,144))
 
 for i in range(0,len(yrN)):
@@ -524,7 +518,7 @@ for lat in range(0,143):
 # considering negative values also and not ignoring them like last attempt
 transform = from_origin(-178.75, 89.3706, 2.48263888888888884, 1.249938872316494809)
 
-file_dir_ep = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period_newApproach'
+file_dir_ep = r'.\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period_newApproach'
 yrN = np.concatenate((np.arange(1971,1980), np.arange(1981,1990), np.arange(1991,1997)))
 for yr in yrN:
     idx_yr = np.where(np.arange(1970,1997)==yr)
@@ -547,8 +541,7 @@ import os
 import matplotlib.pyplot as plt
 import geopandas as gp
 
-shapefile = gp.read_file(r"G:\My Drive\Data_for_NetworkAnalysis\Country Boundaries\Longitude_Graticules_and_World_Countries_Boundaries-shp"
-                             r"\99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp")
+shapefile = gp.read_file(r"99bfd9e7-bb42-4728-87b5-07f8c8ac631c2020328-1-1vef4ev.lu5nk.shp")
 # columns: OBJECTID	CNTRY_NAME
 # df_NOx_kgNha = pd.DataFrame(0, index=np.arange(len(shapefile)), columns=np.arange(1961,2019,1))
 # df_NOx_kgNha = df_NOx_kgNha.rename(index = shapefile['CNTRY_NAME'])
@@ -565,9 +558,9 @@ for yr in yrN_pred:
         yrcr = 2015
     else:
         yrcr = yr
-    file_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period_newApproach'
+    file_dir = r'.\N_emission_data_using_textfile\Raster_file_Zhou_extended_period\Interpolated_period_newApproach'
     file_name = "ndep_ep_{0}_wNeg_interp_na".format(yr)
-    crfile_dir = r'G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Modified_Raster_Files\Cropland_LUH2\For_Zhou\Modified'
+    crfile_dir = r'.\Modified_Raster_Files\Cropland_LUH2\For_Zhou\Modified'
     crfile_name = "Cropland_yr{0}_LUH_Zhou".format(yrcr)
     Ndep_tmp = f_aggDataSimple(file_dir,file_name,crfile_dir, crfile_name)
     # cropland
