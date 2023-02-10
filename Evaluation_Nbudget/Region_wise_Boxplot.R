@@ -12,7 +12,7 @@ WH = read_excel('./Using_Matlab/3_WH_115Comparison_UQ_wRgn.xlsx')
 WL = read_excel('./Using_Matlab/4_WL_115Comparison_UQ_wRgn.xlsx')
 
 # Zhang et al. 2021
-data <- readMat('G:/My Drive/N_deposition_project/Gridded DATA/Data_Organization/From_Tan_ForComparison/Ndeposition_kgNha_Srishti_25-Feb-2021.mat')
+data <- readMat('./Ndeposition_kgNha_Srishti_25-Feb-2021.mat')
 for(i in c(1,4,5,6)) assign(names(data)[i], data[[i]]); rm(data)
 uniYr = 1961:2015
 for (yr in uniYr){
@@ -20,7 +20,7 @@ for (yr in uniYr){
     comp_Data = test.ndep.3d.kgNha[,,idx_yr]#ndep.3d.Z[,,idx_yr]
     
     # names 
-    data <- readMat('G:/My Drive/N_deposition_project/Gridded DATA/Data_Organization/From_Tan_ForComparison/Ndeposition_Srishti_24-Feb-2021.mat')
+    data <- readMat('./Ndeposition_Srishti_24-Feb-2021.mat')
     for(i in 4) assign(names(data)[i], data[[i]]); rm(data)
     
     colnames(comp_Data) = unlist(DataSource4)
@@ -110,12 +110,4 @@ for (yr in uniYr){
                           legend.text = element_text(size = 10)))
     dev.off()
 }
-## double grouping
-# ggplot(df_dryad_all_melt)+
-#     geom_boxplot(data = df_toplot_subset_yr_melt, aes(y = Country, x = value),fill = "white", colour = "darkgrey",
-#                  size = 1)+
-#     geom_point(data = df_dryad_all_melt, aes(y = Country, x = value), color = 'black', shape = 18, size = 2.5)+
-#     scale_y_discrete(limits=rev)+
-#     facet_wrap(variable~Region,scales = "free")+
-#     xlab(bquote('N deposition (kg N'~ ha^-1~yr^-1~')'))+
-#     theme_bw()
+
