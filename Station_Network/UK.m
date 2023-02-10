@@ -16,7 +16,7 @@ opts.ExtraColumnsRule = "ignore";
 opts.EmptyLineRule = "read";
 
 % Import the data
-ECNstationkgNhayr = readtable("G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\ECN_station_kgNhayr_m.csv", opts);
+ECNstationkgNhayr = readtable(".\Data_Organization\ECN_station_kgNhayr_m.csv", opts);
 df_totNdep_kgNhayr_Stn = table2array(ECNstationkgNhayr);
 df_totNdep_kgNhayr_Stn = df_totNdep_kgNhayr_Stn(2:end,2:end);
 df_totNdep_kgNhayr_Stn(:,59:60)  = NaN;
@@ -43,7 +43,7 @@ opts = setvaropts(opts, "VarName1", "EmptyFieldRule", "auto");
 
 % Import the data
 %dftotNdepkgNha = readtable("G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Data files for repository\Adjusting missing values using FAO\Submission filles\2_AH.xlsx", opts);
-[number, string, dftotNdepkgNha]= xlsread('G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Data files for repository\Adjusting missing values using FAO\Submission filles\1_AH.xlsx');
+[number, string, dftotNdepkgNha]= xlsread('.\Data files for repository\Adjusting missing values using FAO\Submission filles\1_AH.xlsx');
 dftotNdepkgNha(1,:)=[];
 
 df_totNdep_AH = cell2mat(dftotNdepkgNha(223,3:end));
@@ -68,7 +68,7 @@ opts = setvaropts(opts, "VarName1", "WhitespaceRule", "preserve");
 opts = setvaropts(opts, "VarName1", "EmptyFieldRule", "auto");
 
 % Import the data
-[number, string, dftotNdepkgNha]= xlsread('G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Data files for repository\Adjusting missing values using FAO\Submission filles\2_AL.xlsx');
+[number, string, dftotNdepkgNha]= xlsread('.\Data files for repository\Adjusting missing values using FAO\Submission filles\2_AL.xlsx');
 dftotNdepkgNha(1,:)=[];
 
 df_totNdep_AL = cell2mat(dftotNdepkgNha(223,3:end));
@@ -94,7 +94,7 @@ opts = setvaropts(opts, "VarName1", "WhitespaceRule", "preserve");
 opts = setvaropts(opts, "VarName1", "EmptyFieldRule", "auto");
 
 % Import the data
-[number, string, dftotNdepkgNha]= xlsread('G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Data files for repository\Adjusting missing values using FAO\Submission filles\3_WH.xlsx');
+[number, string, dftotNdepkgNha]= xlsread('.\Data files for repository\Adjusting missing values using FAO\Submission filles\3_WH.xlsx');
 dftotNdepkgNha(1,:)=[];
 
 df_totNdep_WH = cell2mat(dftotNdepkgNha(223,3:end));
@@ -120,7 +120,7 @@ opts = setvaropts(opts, "VarName1", "WhitespaceRule", "preserve");
 opts = setvaropts(opts, "VarName1", "EmptyFieldRule", "auto");
 
 % Import the data
-[number, string, dftotNdepkgNha]= xlsread('G:\My Drive\N_deposition_project\Gridded DATA\Data_Organization\Data files for repository\Adjusting missing values using FAO\Submission filles\4_WL.xlsx');
+[number, string, dftotNdepkgNha]= xlsread('.\Data files for repository\Adjusting missing values using FAO\Submission filles\4_WL.xlsx');
 dftotNdepkgNha(1,:)=[];
 
 df_totNdep_WL = cell2mat(dftotNdepkgNha(223,3:end));clear opts 
